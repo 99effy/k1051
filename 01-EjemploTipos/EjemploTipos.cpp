@@ -7,6 +7,9 @@
 
 #include <iostream>
 #include <cassert>
+#include <limits>
+
+using namespace std::string_literals;
 
 int main() {
 	// Definimos cada variable como una constante para que no varíe su valor
@@ -19,6 +22,8 @@ int main() {
 	// redondeado hacia abajo. Es decir, sin su mantisa.
 	const int entero = decimal;
 	const std::string cadenaDeCaracteres = "Prueba";
+    const long numeroLong = 123456789;
+
 
 	// Simplemente pasamos la variable ya que al tener un valor verdadero
 	// y ser constante este no debería variar.
@@ -46,5 +51,20 @@ int main() {
 	// por typeid (un puntero a un const char), casteando su valor como un char, 
 	// y compararlo con el valor que debería devolver si el tipo es un char.
 	assert((char)*typeid(caracter).name() == 'c');
-	
+
+    // Hay que investigar más operaciones, averiguar el rango y máximo de cada tipo,
+    // separador de dígitos??? y sumar 10 veces 0.1, además de la memoria que ocupa
+    // cada tipo de dato.
+
+    // Verificamos que la longitud de los dos strings (No su tamaño) sea equivalente.
+    assert("String"s.length() == std::string("String").length());
+
+    // Verificamos que el valor de enteroSinSigno con un sufijo 'u' sea del mismo tipo
+    // que la variable en cuestión.
+    assert(38292u === enteroSinSigno);
+
+    // Verificamos que el valor de numeroLong con el sufijo 'l' sea del mismo tipo.
+    assert(123456789l === numeroLong);
+
+//    assert(std::numeric_limits<float>)
 }
