@@ -22,7 +22,7 @@ int main() {
 	// redondeado hacia abajo. Es decir, sin su mantisa.
 	const int entero = decimal;
 	const std::string cadenaDeCaracteres = "Prueba";
-    const long numeroLong = 123456789;
+	const long numeroLong = 123456789;
 
 
 	// Simplemente pasamos la variable ya que al tener un valor verdadero
@@ -51,20 +51,37 @@ int main() {
 	// por typeid (un puntero a un const char), casteando su valor como un char, 
 	// y compararlo con el valor que debería devolver si el tipo es un char.
 	assert((char)*typeid(caracter).name() == 'c');
+	
+	// Hay que investigar más operaciones, averiguar el rango y máximo de cada tipo 
+	// separador de dígitos??? y sumar 10 veces 0.1, además de la memoria que ocup 
+	// cada tipo de dato 
+	
+	// Verificamos que la longitud del string literal (No su tamaño) y el objeto
+	// string sean equivalentes.
+   	assert("String"s.length() == std::string("String").length());
 
-    // Hay que investigar más operaciones, averiguar el rango y máximo de cada tipo,
-    // separador de dígitos??? y sumar 10 veces 0.1, además de la memoria que ocupa
-    // cada tipo de dato.
+    	// Verificamos que el valor de enteroSinSigno con un sufijo 'u' tenga el mismo
+	// valor que la variable en cuestión
+    	assert(38292u == enteroSinSigno);
 
-    // Verificamos que la longitud de los dos strings (No su tamaño) sea equivalente.
-    assert("String"s.length() == std::string("String").length());
+    	// Verificamos que el valor de numeroLong con el sufijo 'l' sea el mismo que
+	// el de la variable.
+    	assert(123456789l == numeroLong);
 
-    // Verificamos que el valor de enteroSinSigno con un sufijo 'u' sea del mismo tipo
-    // que la variable en cuestión.
-    assert(38292u === enteroSinSigno);
+	// Comprobamos que 1000 es mayor a 5 por 10 a la 2
+	assert(1000 > 5e2);
 
-    // Verificamos que el valor de numeroLong con el sufijo 'l' sea del mismo tipo.
-    assert(123456789l === numeroLong);
+	// Concatenamos cadenas de caracteres
+	assert("Esto es u"s + "na prueba"s == "Esto es una prueba"s);
+	
+	// Verificamos los límites de un unsigned long long
+	assert(std::numeric_limits<unsigned long long>::max() == 18446744073709551615u);
+	assert(std::numeric_limits<unsigned long long>::min() == 0);
 
-//    assert(std::numeric_limits<float>)
+	// Verificamos el tamaño máximo de un string
+	assert("string"s.max_size() == 9223372036854775807);
+
+	// Comparamos el tamaño en memoria de un string de C++ con uno de C
+	assert(sizeof "String"s == 32);
+	assert(sizeof "String" == 7);
 }
