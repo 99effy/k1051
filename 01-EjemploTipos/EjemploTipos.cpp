@@ -71,7 +71,7 @@ int main() {
 	// Comprobamos que 1000 es mayor a 5 por 10 a la 2
 	assert(1000 > 5e2);
 
-	// Concatenamos cadenas de caracteres
+	// Concatenamos strings de C++
 	assert("Esto es u"s + "na prueba"s == "Esto es una prueba"s);
 	
 	// Verificamos los límites de un unsigned long long
